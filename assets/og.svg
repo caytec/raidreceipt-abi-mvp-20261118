@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#10151d"/>
+  <circle cx="1000" cy="80" r="300" fill="#243244"/>
+  <text x="80" y="145" fill="#c7f36b" font-family="Arial,sans-serif" font-size="28" font-weight="700" letter-spacing="7">RAIDRECEIPT ABI</text>
+  <text x="80" y="270" fill="#edf2f4" font-family="Arial,sans-serif" font-size="72" font-weight="700">Did your raid</text>
+  <text x="80" y="355" fill="#edf2f4" font-family="Arial,sans-serif" font-size="72" font-weight="700">actually pay?</text>
+  <text x="80" y="445" fill="#b4c0c9" font-family="Arial,sans-serif" font-size="30">Profit · performance · squad receipts</text>
+</svg>
