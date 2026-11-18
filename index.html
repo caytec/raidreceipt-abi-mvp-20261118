@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Arena Breakout Infinite Profit Calculator — RaidReceipt ABI</title>
+  <meta name="description" content="Calculate your Arena Breakout Infinite raid profit, break-even point, and performance grade. Create a shareable squad raid receipt in seconds.">
+  <meta name="theme-color" content="#10151d">
+  <link rel="canonical" href="https://caytec.github.io/raidreceipt-abi-mvp-20261118/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <meta property="og:title" content="Arena Breakout Infinite Profit Calculator — RaidReceipt ABI">
+  <meta property="og:description" content="Turn any ABI raid into a shareable receipt showing profit, performance, and who really carried.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://caytec.github.io/raidreceipt-abi-mvp-20261118/">
+  <meta property="og:site_name" content="RaidReceipt ABI">
+  <meta property="og:image" content="https://caytec.github.io/raidreceipt-abi-mvp-20261118/assets/og.svg">
+  <meta property="og:image:alt" content="RaidReceipt ABI profit calculator">
+  <meta property="og:image:type" content="image/svg+xml">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Arena Breakout Infinite Profit Calculator — RaidReceipt ABI">
+  <meta name="twitter:description" content="Calculate raid profit, performance, and shareable squad receipts.">
+  <meta name="twitter:image" content="https://caytec.github.io/raidreceipt-abi-mvp-20261118/assets/og.svg">
+  <meta name="twitter:image:alt" content="RaidReceipt ABI profit calculator">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"RaidReceipt ABI",
+    "url":"https://caytec.github.io/raidreceipt-abi-mvp-20261118/",
+    "description":"An unofficial Arena Breakout Infinite raid profit calculator and receipt generator.",
+    "applicationCategory":"GameApplication",
+    "operatingSystem":"Web",
+    "browserRequirements":"Requires JavaScript",
+    "isAccessibleForFree":true,
+    "publisher":{
+      "@type":"Organization",
+      "name":"RaidReceipt ABI"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">RAID<span>RECEIPT</span><small>ABI</small></a>
+    <nav aria-label="Primary navigation">
+      <a href="#calculator">Calculator</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">POST-RAID ACCOUNTING</p>
+      <h1>Arena Breakout Infinite Profit Calculator</h1>
+      <p class="lead">Calculate raid profit, break-even status, and performance from your actual loadout and extracted loot. Create a shareable RaidReceipt for your squad.</p>
+      <a class="button secondary" href="#calculator">Build a receipt ↓</a>
+    </section>
+
+    <section id="calculator" class="workspace" aria-labelledby="calculator-title">
+      <div class="panel">
+        <p class="eyebrow">01 / RAID DATA</p>
+        <h2 id="calculator-title">Enter the run</h2>
+
+        <form id="raid-form">
+          <div class="grid two">
+            <label for="map">Map
+              <select id="map" name="map" required>
+                <option value="">Choose a map</option>
+                <option>Farm</option>
+                <option>Valley</option>
+                <option>Northridge</option>
+                <option>Armory</option>
+                <option>TV Station</option>
+                <option>Port</option>
+              </select>
+            </label>
+
+            <label for="mode">Mode
+              <select id="mode" name="mode" required>
+                <option value="">Choose a mode</option>
+                <option>Normal</option>
+                <option>Lockdown</option>
+                <option>Forbidden</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="grid two">
+            <label for="loadoutCost">Loadout cost <span>(koen)</span>
+              <input id="loadoutCost" name="loadoutCost" type="number" min="0" max="999999999" step="1" inputmode="numeric" placeholder="168000" required aria-describedby="loadoutCost-error">
+              <small id="loadoutCost-error" class="field-error"></small>
+            </label>
+
+            <label for="lootValue">Extracted loot <span>(koen)</span>
+              <input id="lootValue" name="lootValue" type="number" min="0" max="999999999" step="1" inputmode="numeric" placeholder="412000" required aria-describedby="lootValue-error">
+              <small id="lootValue-error" class="field-error"></small>
+            </label>
+          </div>
+
+          <div class="grid three">
+            <label for="ammoCost">Ammo <span>(optional)</span>
+              <input id="ammoCost" name="ammoCost" type="number" min="0" max="999999999" step="1" inputmode="numeric" placeholder="22000">
+            </label>
+
+            <label for="consumableCost">Supplies <span>(optional)</span>
+              <input id="consumableCost" name="consumableCost" type="number" min="0" max="999999999" step="1" inputmode="numeric" placeholder="0">
+            </label>
+
+            <label for="entryCost">Entry fee <span>(optional)</span>
+              <input id="entryCost" name="entryCost" type="number" min="0" max="999999999" step="1" inputmode="numeric" placeholder="0">
+            </label>
+          </div>
+
+          <fieldset>
+            <legend>Outcome</legend>
+            <div class="radio-row">
+              <label for="survived-yes"><input id="survived-yes" type="radio" name="survived" value="true" checked> Survived</label>
+              <label for="survived-no"><input id="survived-no" type="radio" name="survived" value="false"> Died</label>
+            </div>
+          </fieldset>
+
+          <div class="grid three">
+            <label for="kills">Kills <span>(optional)</span>
+              <input id="kills" name="kills" type="number" min="0" max="99" step="1" inputmode="numeric" placeholder="0">
+            </label>
+
+            <label for="assists">Assists <span>(optional)</span>
+              <input id="assists" name="assists" type="number" min="0" max="99" step="1" inputmode="numeric" placeholder="0">
+            </label>
+
+            <label for="revives">Revives <span>(optional)</span>
+              <input id="revives" name="revives" type="number" min="0" max="99" step="1" inputmode="numeric" placeholder="0">
+            </label>
+          </div>
+
+          <div class="grid two">
+            <label for="playerName">Player name <span>(optional)</span>
+              <input id="playerName" name="playerName" maxlength="24" type="text" placeholder="Your callsign">
+            </label>
+
+            <label for="tone">Tone
+              <select id="tone" name="tone">
+                <option value="tactical">Tactical</option>
+                <option value="funny" selected>Funny</option>
+                <option value="savage">Savage</option>
+              </select>
+            </label>
+          </div>
+
+          <p id="form-error" class="error" role="alert"></p>
+          <button id="generate" class="button primary" type="submit">Generate Raid Receipt</button>
+        </form>
+
+        <p class="microcopy">No account. No live pricing. Your numbers stay in your browser unless optional AI generation is enabled.</p>
+      </div>
+
+      <div class="panel result-panel" id="result-panel">
+        <p id="result-status" class="visually-hidden" role="status" aria-live="polite"></p>
+
+        <div class="empty-state" id="empty-state">
+          <div class="receipt-mark">▣</div>
+          <h2>Your receipt appears here</h2>
+          <p>Complete the raid details to see profit, grade, verdict, and sharing tools.</p>
+        </div>
+
+        <article id="receipt" class="receipt hidden" tabindex="-1" aria-labelledby="receipt-title">
+          <div class="receipt-top">
+            <div>
+              <p class="eyebrow">RAID RECEIPT</p>
+              <h2 id="receipt-title">—</h2>
+            </div>
+            <strong id="grade" class="grade">—</strong>
+          </div>
+
+          <p id="receipt-route" class="route">—</p>
+          <p id="survival" class="survival">—</p>
+
+          <div class="numbers">
+            <div><span>Total cost</span><strong id="total-cost">—</strong></div>
+            <div><span>Loot extracted</span><strong id="loot">—</strong></div>
+            <div><span>Net result</span><strong id="net">—</strong></div>
+            <div><span>Return</span><strong id="multiplier">—</strong></div>
+          </div>
+
+          <p id="verdict" class="verdict">—</p>
+          <ul id="bullets" class="bullets"></ul>
+          <p id="squad-message" class="squad-message"></p>
+          <p class="receipt-foot">Unofficial community tool · User-entered estimates</p>
+
+          <div class="actions">
+            <button id="copy" class="button primary" type="button">Copy Discord text</button>
+            <button id="share" class="button secondary" type="button">Share / copy URL</button>
+            <button id="download" class="button secondary" type="button">Download card</button>
+            <button id="edit" class="button text-button" type="button">Edit values</button>
+          </div>
+
+          <p class="microcopy">Shared URLs contain your entered raid values and are readable by anyone with the link.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="content-section">
+      <p class="eyebrow">02 / THE MATH</p>
+      <h2>Profit without the guesswork</h2>
+
+      <div class="info-grid">
+        <div>
+          <h3>Total raid cost</h3>
+          <p>Loadout, ammunition, consumables, and any entry fee are added together.</p>
+        </div>
+        <div>
+          <h3>Net result</h3>
+          <p>Extracted loot minus total raid cost. Survival and profitability are separate.</p>
+        </div>
+        <div>
+          <h3>Community grade</h3>
+          <p>A rules-based score, not an official Arena Breakout: Infinite statistic.</p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <h3>FAQ</h3>
+        <details>
+          <summary>Does dying always mean a loss?</summary>
+          <p>No. RaidReceipt evaluates the values you enter. A death can still be profitable or earn a non-F grade with meaningful combat or support stats.</p>
+        </details>
+        <details>
+          <summary>Does it use live ABI prices?</summary>
+          <p>No. This MVP uses your estimates and does not claim exact game-economy data.</p>
+        </details>
+        <details>
+          <summary>Is RaidReceipt official?</summary>
+          <p>No. RaidReceipt is an unofficial community tool and is not affiliated with or endorsed by MoreFun Studios or Arena Breakout: Infinite.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>RaidReceipt ABI · Unofficial, user-entered, and made for squad banter.</p>
+    <nav aria-label="Footer navigation">
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
